@@ -13,6 +13,7 @@ const URL = "https://nomad-movies.nomadcoders.workers.dev/movies";
  * 3. 가져온 데이터를 클라이언트 컴포넌트에서 사용한다.
  */
 async function getMovies() {
+  await new Promise((resolve) => setTimeout(resolve, 5000));
   const response = await fetch(URL);
   const json = await response.json();
   return json;
