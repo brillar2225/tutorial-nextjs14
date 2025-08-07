@@ -26,16 +26,25 @@
  * 
  */
 
+import { BASE_URL } from "../../../(home)/page";
+
+async function getMovie(id: string) {
+  const response = await fetch(`${BASE_URL}/${id}`);
+  const json = await response.json();
+  return json;
+}
+
 export default async function MovieDetail({
   params
 }: {
   params: Promise<{ id: string }>
 }) {
   const { id } = await params;
-  
+  const movie = await getMovie(id);
+
   return (
     <div>
-      <h1>Movie Detail: {id}</h1>
+      <h1>{movie.title}</h1>
     </div>
   )
 }
