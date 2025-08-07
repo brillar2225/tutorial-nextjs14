@@ -32,10 +32,11 @@ import VideosList from "../../../../components/videos-list";
 import ErrorBoundary from "../../../../components/error-boundary";
 
 interface MovieDetailProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-export default async function MovieDetail({ params: { id } }: MovieDetailProps) {
+export default async function MovieDetail({ params }: MovieDetailProps) {
+  const { id } = await params;
   /** 
    * MEMO:
    * ```tsx
