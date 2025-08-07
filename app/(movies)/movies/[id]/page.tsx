@@ -29,6 +29,7 @@
 import { Suspense } from "react";
 import MovieInfo from "../../../../components/movie-info";
 import VideosList from "../../../../components/videos-list";
+import ErrorBoundary from "../../../../components/error-boundary";
 
 interface MovieDetailProps {
   params: { id: string };
@@ -57,9 +58,11 @@ export default async function MovieDetail({ params: { id } }: MovieDetailProps) 
       <Suspense fallback={<p>Loading movie info...</p>}>
         <MovieInfo id={id} />
       </Suspense>
-      <Suspense fallback={<p>Loading videos...</p>}>  
-        <VideosList id={id} />
-      </Suspense>
+      <ErrorBoundary fallback={<p>Failed to load videos</p>}>
+        <Suspense fallback={<p>Loading videos...</p>}>  
+          <VideosList id={id} />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   )
 }
