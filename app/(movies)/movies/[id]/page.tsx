@@ -27,12 +27,20 @@
  */
 
 import { Suspense } from "react";
-import MovieInfo from "../../../../components/movie-info";
+import MovieInfo, { getMovie } from "../../../../components/movie-info";
 import VideosList from "../../../../components/videos-list";
 import ErrorBoundary from "../../../../components/error-boundary";
 
 interface MovieDetailProps {
   params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({ params }: MovieDetailProps) {
+  const { id } = await params;
+  const movie = await getMovie(id);
+  return {
+    title: movie.title,
+  };
 }
 
 export default async function MovieDetail({ params }: MovieDetailProps) {
