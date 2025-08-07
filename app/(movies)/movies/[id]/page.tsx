@@ -55,7 +55,6 @@ export default async function MovieDetail({ params }: MovieDetailProps) {
   */
   return (
     <div>
-      <h1>Movie Detail Page</h1>
       <Suspense fallback={<p>Loading movie info...</p>}>
         <MovieInfo id={id} />
       </Suspense>
