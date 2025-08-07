@@ -1,5 +1,5 @@
 import styles from "../styles/video-list.module.css";
-import { BASE_URL } from "../app/(home)/page";
+import { BASE_URL } from "../app/constants";
 
 async function getVideos(id: string) {
   const response = await fetch(`${BASE_URL}/${id}/videos`);

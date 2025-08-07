@@ -1,5 +1,5 @@
 import styles from "../styles/movie-info.module.css";
-import { BASE_URL } from "../app/(home)/page";
+import { BASE_URL } from "../app/constants";
 
 async function getMovie(id: string) {
   // MEMO: Next.js 15부터 기본 캐싱이 없어졌기 때문에 아래와 같이 두번째 인자에 명시적으로 전달해야 캐싱이 됨.
